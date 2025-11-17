@@ -1,0 +1,297 @@
+/* =========================
+   Bookmark Manager Pro - Styles
+   Supports: Dark/Light themes, Compact/Extended UI, Cards, Modal, Toast
+   ========================= */
+
+/* ---------- Root & Variables ---------- */
+:root {
+  --bg: #0a0a0a;
+  --panel: #1a1a1a;
+  --text: #eee;
+  --accent: #4f9efc;
+  --danger: #ff5c5c;
+  --success: #4caf50;
+  --card-bg: #1c1c1c;
+  --card-border: #333;
+  --tag-color: #888;
+}
+
+/* ---------- Body & Themes ---------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+body.light {
+  --bg: #f7fafc;
+  --panel: #ffffff;
+  --text: #0b1220;
+  --card-bg: #ffffff;
+  --card-border: #ccc;
+  --tag-color: #555;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--panel);
+  color: var(--text);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-actions .btn {
+  padding: 0.3rem 0.6rem;
+  background-color: var(--accent);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.header-actions .btn.ghost {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--panel);
+}
+
+.controls input,
+.controls select {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+.controls button {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---------- Forms ---------- */
+.form-section {
+  padding: 1rem;
+  background-color: var(--panel);
+}
+
+form#form input,
+form#form button {
+  margin: 0.2rem 0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+form#form button {
+  background-color: var(--accent);
+  border: none;
+  cursor: pointer;
+}
+
+/* Tag autocomplete */
+.tag-autocomplete {
+  position: absolute;
+  background-color: var(--panel);
+  border: 1px solid #888;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+
+.tag-autocomplete .tag {
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.tag-autocomplete .tag:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Bookmark List & Cards ---------- */
+.bookmark-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: grab;
+}
+
+.card.dragging {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
+.card input[type="checkbox"] {
+  margin-top: 0.3rem;
+}
+
+.favicon img {
+  width: 32px;
+  height: 32px;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-body h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-body p {
+  margin: 0.2rem 0 0.2rem 0;
+  font-size: 0.85rem;
+  color: var(--tag-color);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.tag-pill {
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Actions */
+.actions button {
+  margin-left: 0.3rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions .edit { background-color: var(--accent); color: #fff; }
+.actions .archive { background-color: #999; color: #fff; }
+.actions .delete { background-color: var(--danger); color: #fff; }
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 100;
+}
+
+.modal[aria-hidden="false"] { display: flex; }
+
+.modal-content {
+  background-color: var(--panel);
+  padding: 1rem;
+  border-radius: 6px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.modal-content input,
+.modal-content button {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #888;
+}
+
+.modal-content button {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--panel);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: opacity 0.3s;
+}
+
+.toast.hidden { display: none; }
+
+/* ---------- Compact / Extended UI ---------- */
+body.compact .card {
+  flex-direction: row;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+}
+
+body.compact .card-body p { display: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-actions { flex-wrap: wrap; }
+}
+

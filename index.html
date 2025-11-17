@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Manager Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="extended">
+
+  <!-- Header -->
+  <header class="header">
+    <h1>NGT 360 Bookmark Manager</h1>
+    <div class="header-actions">
+      <label>
+        <input type="checkbox" id="themeToggle">
+        <span id="themeLabel">Dark</span>
+      </label>
+      <!-- UI Mode button will be injected by JS -->
+      <button id="newBtn" class="btn">New Bookmark</button>
+      <button id="exportBtn" class="btn">Export JSON</button>
+      <button id="importBtn" class="btn">Import JSON</button>
+      <input type="file" id="fileInput" style="display:none">
+    </div>
+  </header>
+
+  <!-- Controls -->
+  <section class="controls">
+    <input type="text" id="search" placeholder="Search bookmarks">
+    <select id="sort">
+      <option value="new">Newest</option>
+      <option value="old">Oldest</option>
+      <option value="alpha">A-Z</option>
+      <option value="alpha-desc">Z-A</option>
+    </select>
+    <select id="viewSelect">
+      <option value="all">All</option>
+      <option value="active">Active</option>
+      <option value="archived">Archived</option>
+    </select>
+    <select id="tagFilter">
+      <option value="__all">All tags</option>
+    </select>
+    <label><input type="checkbox" id="selectAll"> Select All</label>
+    <button id="bulkArchive" class="btn">Archive Selected</button>
+    <button id="bulkDelete" class="btn">Delete Selected</button>
+    <div id="resultCount">0 results</div>
+    <div id="storageCount">0 stored</div>
+  </section>
+
+  <!-- Add Bookmark Form -->
+  <section class="form-section">
+    <form id="form">
+      <input type="text" id="title" placeholder="Title" required>
+      <input type="url" id="url" placeholder="https://example.com" required>
+      <input type="text" id="tags" placeholder="Tags (comma separated)">
+      <input type="text" id="notes" placeholder="Notes">
+      <button type="submit" id="saveBtn">Add Bookmark</button>
+      <button type="button" id="clearBtn">Clear</button>
+      <div class="tag-autocomplete" id="tagSuggestions"></div>
+    </form>
+  </section>
+
+  <!-- Bookmark List -->
+  <section id="list" class="bookmark-list">
+    <!-- Cards will be rendered here -->
+  </section>
+
+  <!-- Edit Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <form id="editForm" class="modal-content">
+      <h2>Edit Bookmark</h2>
+      <input type="text" id="editTitle" placeholder="Title" required>
+      <input type="url" id="editUrl" placeholder="https://example.com" required>
+      <input type="text" id="editTags" placeholder="Tags (comma separated)">
+      <input type="text" id="editNotes" placeholder="Notes">
+      <button type="submit" id="editSave">Save</button>
+      <button type="button" id="editCancel">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Toast for Undo -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
